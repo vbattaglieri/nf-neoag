@@ -3,8 +3,8 @@
 A [Nextflow](https://www.nextflow.io/) (DSL2) pipeline for neoantigen prediction,
 covering:
 
-- **Step 10 — neo from SNVs** (`neo-snv`)
-- **Step 11 — neo from Indels** (`neo-indel`)
+- neoantigens from SNVs** (`neo-snv`)
+- neoantigens from Indels** (`neo-indel`)
 - *(optional)* merge of the two consensus outputs (`neo-merge`)
 
 The analysis is a self-contained, dependency-free **Python 3 package** (`neoag`,
@@ -12,7 +12,7 @@ in [`src/neoag`](src/neoag)) that reimplements the original method. The three
 `neo-*` commands can also be run standalone, without Nextflow.
 
 > **Attribution.** The neoantigen-prediction **method** is the work of
-> **Giuseppe Rospo**, a former group member — all scientific credit goes to him.
+> **Giuseppe Rospo**, a former group member of Genomics and Targeted Therapies Lab led by Prof. Alberto Bardelli  — all scientific credit goes to him.
 > This repository is an independent Python 3 reimplementation of that method,
 > wrapped as a Nextflow pipeline for portability and reproducibility.
 > See [`CITATIONS.md`](CITATIONS.md).
@@ -26,30 +26,6 @@ in [`src/neoag`](src/neoag)) that reimplements the original method. The three
   Nextflow port, containerization, multi-genome configuration (hg38/hg19/mm10),
   CI, and packaging for reproducible, shareable use.
 
-*(If you contributed, add yourself here.)*
-
-## Relationship to the original scripts
-
-This is a clean-room-style reimplementation, not a repackaging of the original
-Python 2 / bash scripts. The original scripts are **not distributed** with this
-repository (they remain the author's own work; see attribution above) and are
-not required to run the pipeline. Two deliberate, documented deviations were
-made from the original behaviour (both because the legacy behaviour was either
-broken on current reference files or a bug):
-
-1. **YAR refFlat parsing is anchored from the right.** The current
-   `refFlat_mRNA.*.yar` files carry an extra leading `>id` column that the legacy
-   `indel_frameshift.py` did not expect (it indexed fields from the left and would
-   mis-parse them). We anchor the refFlat columns from the right, tolerating the
-   optional leading column.
-2. **Length-matched indel peptides.** The legacy driver used `$1=kmer`
-   (an always-true awk assignment) instead of `$1==kmer`, pooling peptides across
-   lengths. We emit the peptide built specifically for each length k.
-
-The identifier scheme also moved from `hashids` to a stdlib `hashlib` hash
-(same purpose: a stable per-variant id, capped at 10 chars for netMHC). Because
-of that, variant ids are **not** byte-identical to legacy ids — but they are
-still unique and stable across the per-length netMHC runs.
 
 ## What it does
 
@@ -154,17 +130,6 @@ neo-merge sample.neoantigens.results.consensus  sample.neoantigens.results.conse
 Each writes `sample.neoantigens.results.consensus`; `neo-merge` writes
 `sample.neoantigens.consensus.all[.expanded]`.
 
-## Notes
-
-- The analysis is **Python 3** (standard library only) — see [`src/neoag`](src/neoag).
-  `tcsh` is still required inside the container solely to launch the netMHC-4.0
-  script.
-- Validation status: the reimplementation has been run end-to-end on the real
-  hg38 references (SNV cDNA table and YAR) with a mock netMHC and produces
-  sensible per-variant consensus output. It has **not** been checked byte-for-byte
-  against the legacy scripts (see the two documented deviations above); before
-  trusting results in production, validate against a known-good input/output pair.
-- Nothing large or license-restricted is committed — see [`.gitignore`](.gitignore).
 
 ## Layout
 
