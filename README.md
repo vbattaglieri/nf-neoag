@@ -3,8 +3,8 @@
 A [Nextflow](https://www.nextflow.io/) (DSL2) pipeline for neoantigen prediction,
 covering:
 
-- neoantigens from SNVs** (`neo-snv`)
-- neoantigens from Indels** (`neo-indel`)
+- **neoantigens from SNVs** (`neo-snv`)
+- **neoantigens from Indels** (`neo-indel`)
 - *(optional)* merge of the two consensus outputs (`neo-merge`)
 
 The analysis is a self-contained, dependency-free **Python 3 package** (`neoag`,
