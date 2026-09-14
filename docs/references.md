@@ -4,10 +4,13 @@ Two reference files are required **per genome build**. They are large and are
 **not** shipped with this pipeline. You supply them via `conf/genomes.config`
 (or `--genomes.<build>.<key>` on the command line, or a custom `-c` config).
 
-| key        | file                                      | used by            | source (original SOP paths)                                  |
-|------------|-------------------------------------------|--------------------|--------------------------------------------------------------|
-| `cdna_tab` | `refFlat_mRNA.<build>.noalt.parsed.tab`   | step 10 (neo/SNV)  | `/mnt/Unito-Analysis/big/Giuseppe/IDEA_package/refFlat_mRNA.<build>.noalt.parsed.tab` |
-| `yar`      | `refFlat_mRNA.<build>.yar`                | step 11 (neo/Indel)| `/scratch/reference/UCSC_<build>/ANNOYAR/refFlat_mRNA.<build>.yar` |
+| key        | file                                      | used by            |
+|------------|-------------------------------------------|--------------------|
+| `cdna_tab` | `refFlat_mRNA.<build>.noalt.parsed.tab`   | step 10 (neo/SNV)  |
+| `yar`      | `refFlat_mRNA.<build>.yar`                | step 11 (neo/Indel)|
+
+Both files derive from the UCSC refFlat annotation for the given build; obtain
+them from wherever your group keeps its reference store.
 
 Supported builds: **hg38, hg19, mm10**.
 
@@ -26,7 +29,7 @@ hg19 therefore supports the SNV step only until an hg19 `.yar` is produced/obtai
 The scripts that originally **built** these two files are not available, so they
 cannot be regenerated from scratch here. Recommended path:
 
-1. **Copy the existing files** off the lab cluster (paths above) to a stable
+1. **Copy the existing files** from your group's reference store to a stable
    location you control.
 2. Point the pipeline at them, e.g.:
 
