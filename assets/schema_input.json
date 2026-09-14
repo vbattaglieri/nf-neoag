@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "nf-neoag samplesheet",
+    "description": "Schema for the input samplesheet",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "sample":      { "type": "string", "pattern": "^\\S+$", "errorMessage": "Sample name must be provided and contain no spaces" },
+            "genome":      { "type": "string", "enum": ["hg38", "hg19", "mm10"], "errorMessage": "genome must be one of hg38, hg19, mm10" },
+            "snv_table":   { "type": "string", "errorMessage": "snv_table must be a path to a .snp.str-bias.Idea.OK file (or empty)" },
+            "indel_table": { "type": "string", "errorMessage": "indel_table must be a path to a .cosmic.Indel.altX file (or empty)" },
+            "hla":         { "type": "string", "pattern": "^\\S+$", "errorMessage": "hla must be a comma-separated netMHC allele list, e.g. HLA-A0201,HLA-B0702" }
+        },
+        "required": ["sample", "genome", "hla"]
+    }
+}

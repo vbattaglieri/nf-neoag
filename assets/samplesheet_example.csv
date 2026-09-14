@@ -1,0 +1,4 @@
+sample,genome,snv_table,indel_table,hla
+patientA,hg38,/data/patientA/patientA.snp.str-bias.Idea.OK,/data/patientA/patientA.cosmic.Indel.alt5,"HLA-A0201,HLA-B0702"
+patientB,hg19,/data/patientB/patientB.snp.str-bias.Idea.OK,,HLA-A0301
+mouseModel1,mm10,,/data/mm/model1.cosmic.Indel.alt5,"H-2-Kd,H-2-Dd,H-2-Ld"

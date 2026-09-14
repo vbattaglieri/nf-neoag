@@ -1,0 +1,32 @@
+# Nextflow
+.nextflow/
+.nextflow.log*
+work/
+results/
+results_test/
+
+# Large reference files must never be committed
+*.yar
+*.noalt.parsed.tab
+
+# Machine-specific local reference/config overrides
+conf/*.local.config
+
+# netMHC (license-restricted) must never be committed
+netMHC*/
+**/netmhc/netMHC
+
+# ...but DO keep the tiny CI stub fixtures under test/data/
+!test/data/
+!test/data/**
+
+# OS
+.DS_Store
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Local-only reference copy of the original scripts (not distributed)
+legacy/

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neoag"
+version = "0.1.0"
+description = "Neoantigen prediction from SNVs and Indels (netMHC-based) — modern Python 3 implementation"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Vittorio Battaglieri" },
+]
+# Original method & reference implementation: Giuseppe Rospo (see CITATIONS.md).
+dependencies = []   # standard library only
+
+[project.scripts]
+neo-snv = "neoag.cli:snv_main"
+neo-indel = "neoag.cli:indel_main"
+neo-merge = "neoag.cli:merge_main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

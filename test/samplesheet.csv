@@ -1,0 +1,3 @@
+sample,genome,snv_table,indel_table,hla
+HT29_test,hg38,test/data/HT29_test.snp.str-bias.Idea.OK,,HLA-A0201
+HT115_test,hg38,,test/data/HT115_test.cosmic.Indel.alt5,HLA-A0201
