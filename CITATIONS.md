@@ -4,13 +4,12 @@
 
 The neoantigen-prediction **method** and its original reference implementation
 (a set of Python 2 / bash scripts, not distributed with this repository) were
-developed by **Giuseppe Rospo**, a former member of our group.
+developed by **Giuseppe Rospo**, a former member of Genomics of Cancer and Targeted Therapies lab led by Prof. Alberto Bardelli.
 **All credit for the original pipeline and methodology goes to him.**
 
 This repository is an independent **Python 3 reimplementation** of that method,
 wrapped as a **Nextflow pipeline**. The goal is portability and reproducibility;
-the scientific logic is preserved, with two small documented deviations (see the
-README) that correct legacy behaviour on current reference files.
+the scientific logic is preserved.
 
 ### Please cite
 
